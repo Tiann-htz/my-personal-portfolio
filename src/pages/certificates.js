@@ -53,11 +53,11 @@ export default function CertificatesPage() {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="flex items-center justify-center gap-3 mb-6"
             >
-              <Award className="w-12 h-12 text-blue-500" />
+              <Award className="w-12 h-12 text-gray-200" />
               <h1 
                 className="text-5xl md:text-7xl font-bold font-['Space_Grotesk']"
                 style={{
-                  background: 'linear-gradient(135deg, #3b82f6 0%, #2563eb 30%, #1d4ed8 60%, #1e40af 100%)',
+                  background: 'linear-gradient(135deg, #c2c7cf 0%, #b5adad 30%, #a9a9a9 60%, #818182 100%)',
                   backgroundClip: 'text',
                   WebkitBackgroundClip: 'text',
                   WebkitTextFillColor: 'transparent',

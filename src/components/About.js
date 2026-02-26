@@ -98,7 +98,7 @@ const [isContactModalOpen, setIsContactModalOpen] = useState(false); // Add this
   transition={{ duration: 0.6, delay: 0.2 }}
   className="text-5xl md:text-6xl font-bold font-['Space_Grotesk'] mb-4"
   style={{
-    background: 'linear-gradient(135deg, #3b82f6 0%, #2563eb 30%, #1d4ed8 60%, #1e40af 100%)',
+    background: 'linear-gradient(135deg, #c2c7cf 0%, #b5adad 30%, #a9a9a9 60%, #818182 100%)',
     backgroundClip: 'text',
     WebkitBackgroundClip: 'text',
     WebkitTextFillColor: 'transparent',
@@ -111,12 +111,12 @@ const [isContactModalOpen, setIsContactModalOpen] = useState(false); // Add this
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: false, amount: 0.3 }}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="flex items-center justify-center gap-2 text-blue-600"
+            className="flex items-center justify-center gap-2 text-gray-100"
           >
             <Sparkles className="w-5 h-5" />
 <p className="text-lg font-['Fira_Code']"
   style={{
-    background: 'linear-gradient(135deg, #3b82f6 0%, #2563eb 30%, #1d4ed8 60%, #1e40af 100%)',
+    background: 'linear-gradient(135deg, #c2c7cf 0%, #e0e0e0 30%, #fdfeff 60%, #818182 100%)',
     backgroundClip: 'text',
     WebkitBackgroundClip: 'text',
     WebkitTextFillColor: 'transparent',
@@ -300,7 +300,7 @@ const [isContactModalOpen, setIsContactModalOpen] = useState(false); // Add this
                 <stat.icon className="w-6 h-6 text-blue-500 group-hover:text-blue-400 transition-colors" />
                 <h4 className="text-4xl font-bold font-['Space_Grotesk']"
   style={{
-    background: 'linear-gradient(135deg, #3b82f6 0%, #2563eb 30%, #1d4ed8 60%, #1e40af 100%)',
+    background: 'linear-gradient(135deg, #c2c7cf 0%, #e0e0e0 30%, #fdfeff 60%, #818182 100%)',
     backgroundClip: 'text',
     WebkitBackgroundClip: 'text',
     WebkitTextFillColor: 'transparent',

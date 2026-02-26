@@ -1,10 +1,10 @@
-import { motion } from 'framer-motion';
-import Link from 'next/link';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Sparkles, Github, Mail, Instagram, Briefcase, MessageCircle } from 'lucide-react';
 import { TypeAnimation } from 'react-type-animation';
 import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
+import Link from 'next/link';
 import ContactModal from '@/components/ContactModal';
 import About from '@/components/About';
 import Portfolio from '@/components/Portfolio';
@@ -48,7 +48,7 @@ function Header() {
     e.preventDefault();
     const element = document.querySelector(href);
     if (element) {
-      const headerOffset = -25; // Height of your fixed header
+      const headerOffset = -25;
       const elementPosition = element.getBoundingClientRect().top;
       const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
 
@@ -64,49 +64,49 @@ function Header() {
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.8, ease: 'easeOut' }}
-      className="fixed top-0 left-0 right-0 z-40 bg-black/10 backdrop-blur-xl"
+      className="fixed top-0 left-0 right-0 z-40 backdrop-blur-sm"
     >
       <div className="container mx-auto px-6 py-4 flex items-center justify-between">
         {/* Logo */}
         <Link href="/" className="text-3xl font-bold font-['Fira_Code']"
-  style={{
-    background: 'linear-gradient(135deg, #3b82f6 0%, #2563eb 30%, #1d4ed8 60%, #1e40af 100%)',
-    backgroundClip: 'text',
-    WebkitBackgroundClip: 'text',
-    WebkitTextFillColor: 'transparent',
-  }}
->
-  &lt;Tian/&gt;
-</Link>
+          style={{
+            background: 'linear-gradient(135deg, #3b82f6 0%, #2563eb 30%, #1d4ed8 60%, #1e40af 100%)',
+            backgroundClip: 'text',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+          }}
+        >
+          &lt;Tian/&gt;
+        </Link>
 
         {/* Navigation */}
         <nav className="flex gap-8">
           {navItems.map((item, index) => {
-  const isActive = activeSection === item.name.toLowerCase();
-  return (
-    <motion.a
-      key={item.name}
-      href={item.href}
-      onClick={(e) => handleNavClick(e, item.href)}
-      initial={{ opacity: 0, y: -20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: 0.1 * index, duration: 0.5 }}
-    style={isActive ? {
-  background: 'linear-gradient(135deg, #3b82f6 0%, #2563eb 30%, #1d4ed8 60%, #1e40af 100%)',
-  backgroundClip: 'text',
-  WebkitBackgroundClip: 'text',
-  WebkitTextFillColor: 'transparent',
-} : {}}
-      className={`transition-colors font-medium text-lg font-['Inter'] relative group ${
-        isActive ? '' : 'text-gray-300 hover:text-white'
-      }`}
+            const isActive = activeSection === item.name.toLowerCase();
+            return (
+              <motion.a
+                key={item.name}
+                href={item.href}
+                onClick={(e) => handleNavClick(e, item.href)}
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.1 * index, duration: 0.5 }}
+                style={isActive ? {
+                  background: 'linear-gradient(135deg, #3b82f6 0%, #2563eb 30%, #1d4ed8 60%, #1e40af 100%)',
+                  backgroundClip: 'text',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                } : {}}
+                className={`transition-colors font-medium text-lg font-['Inter'] relative group ${
+                  isActive ? '' : 'text-gray-300 hover:text-white'
+                }`}
               >
                 {item.name}
-               <span 
-  className={`absolute -bottom-1 left-0 h-0.5 bg-gradient-to-r from-blue-700 to-blue-500 transition-all duration-300 ${
-    isActive ? 'w-full' : 'w-0 group-hover:w-full'
-  }`}
-/>
+                <span 
+                  className={`absolute -bottom-1 left-0 h-0.5 bg-gradient-to-r from-blue-700 to-blue-500 transition-all duration-300 ${
+                    isActive ? 'w-full' : 'w-0 group-hover:w-full'
+                  }`}
+                />
               </motion.a>
             );
           })}
@@ -146,27 +146,27 @@ function HeroSection() {
           className="space-y-6"
         >
           {/* Slogan with Icon */}
-         <motion.div
-  initial={{ opacity: 0, y: 20 }}
-  whileInView={{ opacity: 1, y: 0 }}
-  viewport={{ once: false, amount: 0.3 }}
-  transition={{ delay: 0.4 }}
-  className="flex items-center gap-2"
->
-  <Sparkles className="w-5 h-5 text-blue-500" />
-  <span className="text-lg font-['Fira_Code']"
-    style={{
-      background: 'linear-gradient(135deg, #3b82f6 0%, #2563eb 30%, #1d4ed8 60%, #1e40af 100%)',
-      backgroundClip: 'text',
-      WebkitBackgroundClip: 'text',
-      WebkitTextFillColor: 'transparent',
-    }}
-  >
-    Building Digital Experiences
-  </span>
-</motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false, amount: 0.3 }}
+            transition={{ delay: 0.4 }}
+            className="flex items-center gap-2"
+          >
+            <Sparkles className="w-5 h-5 text-gray-200" />
+            <span className="text-lg font-['Fira_Code']"
+              style={{
+                background: 'linear-gradient(135deg, #c2c7cf 0%, #e0e0e0 30%, #fdfeff 60%, #818182 100%)',
+                backgroundClip: 'text',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+              }}
+            >
+              Building Digital Experiences
+            </span>
+          </motion.div>
 
-          {/* Main Titles with Typing Animation - WHITE TEXT */}
+          {/* Main Titles with Typing Animation */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -174,26 +174,26 @@ function HeroSection() {
             transition={{ delay: 0.5 }}
           >
             <TypeAnimation
-  sequence={[
-    'Full Stack Developer',
-    2000,
-    '',
-    500,
-    'Mobile App Developer',
-    2000,
-    '',
-    500,
-    'Web Developer',
-    2000,
-    '',
-    500,
-  ]}
-  wrapper="h1"
-  cursor={true}
-  repeat={Infinity}
-  speed={40}
-  className="text-5xl md:text-6xl font-bold text-white font-['Space_Grotesk'] leading-tight"
-/>
+              sequence={[
+                'Full Stack Developer',
+                2000,
+                '',
+                500,
+                'Mobile App Developer',
+                2000,
+                '',
+                500,
+                'Web Developer',
+                2000,
+                '',
+                500,
+              ]}
+              wrapper="h1"
+              cursor={true}
+              repeat={Infinity}
+              speed={40}
+              className="text-5xl md:text-6xl font-bold text-white font-['Space_Grotesk'] leading-tight"
+            />
           </motion.div>
 
           {/* Description */}
@@ -239,16 +239,16 @@ function HeroSection() {
             transition={{ delay: 0.9 }}
             className="flex gap-4 pt-4"
           >
-           <button 
-  onClick={() => router.push('/projects')}
-  className="px-6 py-3 text-white rounded-lg font-semibold flex items-center gap-2 hover:shadow-lg hover:shadow-indigo-700/50 transition-all font-['Inter']"
-  style={{
-    background: 'linear-gradient(135deg, #4f46e5 0%, #6366f1 25%, #3b82f6 50%, #2dd4bf 100%)',
-  }}
->
-  <Briefcase className="w-5 h-5" />
-  View Projects
-</button>
+            <button 
+              onClick={() => router.push('/projects')}
+              className="px-6 py-3 text-white rounded-lg font-semibold flex items-center gap-2 hover:shadow-lg hover:shadow-indigo-700/50 transition-all font-['Inter']"
+              style={{
+                background: 'linear-gradient(135deg, #4f46e5 0%, #6366f1 25%, #3b82f6 50%, #2dd4bf 100%)',
+              }}
+            >
+              <Briefcase className="w-5 h-5" />
+              View Projects
+            </button>
             <button 
               onClick={() => setIsContactModalOpen(true)}
               className="px-6 py-3 bg-white/5 border border-blue-700/30 text-white rounded-lg font-semibold flex items-center gap-2 hover:bg-white/10 hover:border-blue-600/50 transition-all font-['Inter']"
@@ -331,7 +331,25 @@ function HeroSection() {
 export default function Home() {
   return (
     <div className="gradient-bg">
-      <GlowBackground />
+      {/* Video Background - fixed so it covers the entire page while scrolling */}
+      <div className="fixed inset-0 overflow-hidden" style={{ zIndex: 0 }}>
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover"
+          style={{ filter: 'blur(10px)' }}
+        >
+          <source src="/colorbends1.mp4" type="video/mp4" />
+        </video>
+        {/* Dark overlay — adjust rgba alpha (0.75) to make it lighter or darker */}
+        <div
+          className="absolute inset-0"
+          style={{ backgroundColor: 'rgba(0, 0, 0, 0.63)' }}
+        />
+      </div>
+
       <Header />
       <HeroSection />
       <About />
