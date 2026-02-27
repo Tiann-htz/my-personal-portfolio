@@ -349,7 +349,7 @@ export default function Home() {
           style={{ backgroundColor: 'rgba(0, 0, 0, 0.75)' }}
         />
       </div>
-
+      <GlowBackground />
       <Header />
       <HeroSection />
       <About />
