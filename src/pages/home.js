@@ -335,7 +335,7 @@ export default function Home() {
       <div className="fixed inset-0" style={{ zIndex: 0, pointerEvents: 'none' }}>
         <ColorBends
           style={{ width: '100%', height: '100%' }}
-          speed={0.2}
+          speed={0.3}
           rotation={45}
           mouseInfluence={0}
           colors={['#0a0a2e', '#0d1b4b', '#0f2460', '#1a3a6e', '#0e4d8a', '#083d6e']}
