@@ -10,7 +10,7 @@ import About from '@/components/About';
 import Portfolio from '@/components/Portfolio';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
-import GlowBackground from '@/components/ui/GlowBackground';
+import ColorBends from '@/component/ColorBends';
 
 // Header Component with Active Section Indicator
 function Header() {
@@ -331,22 +331,24 @@ function HeroSection() {
 export default function Home() {
   return (
     <div className="gradient-bg">
-      {/* Video Background - fixed so it covers the entire page while scrolling */}
-      <div className="fixed inset-0 overflow-hidden" style={{ zIndex: 0 }}>
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          className="absolute inset-0 w-full h-full object-cover"
-          style={{ filter: 'blur(10px)' }}
-        >
-          <source src="/color-bends.mp4" type="video/mp4" />
-        </video>
-        {/* Dark overlay — adjust rgba alpha (0.75) to make it lighter or darker */}
+      {/* ColorBends Background - fixed so it covers the entire page */}
+      <div className="fixed inset-0" style={{ zIndex: 0, pointerEvents: 'none' }}>
+        <ColorBends
+          style={{ width: '100%', height: '100%' }}
+          speed={0.2}
+          rotation={45}
+          mouseInfluence={0}
+          colors={['#0a0a2e', '#0d1b4b', '#0f2460', '#1a3a6e', '#0e4d8a', '#083d6e']}
+          transparent={false}
+          scale={1}
+          frequency={1}
+          warpStrength={1}
+          noise={0.05}
+        />
+        {/* Dark overlay to dim the bg */}
         <div
           className="absolute inset-0"
-          style={{ backgroundColor: 'rgba(0, 0, 0, 0.75)' }}
+          style={{ backgroundColor: 'rgba(0, 0, 0, 0.64)' }}
         />
       </div>
       <Header />
