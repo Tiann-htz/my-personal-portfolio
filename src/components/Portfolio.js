@@ -13,14 +13,12 @@ export default function Portfolio() {
   const [selectedImage, setSelectedImage] = useState(0);
   const [selectedCertificate, setSelectedCertificate] = useState(null);
   const [selectedProjectImage, setSelectedProjectImage] = useState(null);
-;
 
   const tabs = [
     { id: 'projects', name: 'Projects', icon: FolderGit2 },
     { id: 'certificates', name: 'Certificates', icon: Award },
     { id: 'techstack', name: 'Tech Stack', icon: Code2 },
   ];
-
 
   const openModal = (project) => {
     setSelectedProject(project);
@@ -43,7 +41,7 @@ export default function Portfolio() {
           transition={{ duration: 0.8, ease: 'easeOut' }}
           className="text-center mb-12"
         >
-          <motion.h2 
+          <motion.h2
             initial={{ opacity: 0, scale: 0.8 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: false, amount: 0.3 }}
@@ -58,14 +56,14 @@ export default function Portfolio() {
           >
             Portfolio Showcase
           </motion.h2>
-          <motion.p 
+          <motion.p
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: false, amount: 0.3 }}
             transition={{ duration: 0.6, delay: 0.4 }}
             className="text-gray-400 text-lg font-['Inter'] max-w-3xl mx-auto leading-relaxed"
           >
-            Explore my journey through projects, certifications, and technical expertise. 
+            Explore my journey through projects, certifications, and technical expertise.
             Each section represents a milestone in my continuous learning path.
           </motion.p>
         </motion.div>
@@ -88,10 +86,10 @@ export default function Portfolio() {
               transition={{ delay: 0.6 + index * 0.1 }}
               onClick={() => setActiveTab(tab.id)}
               className={`
-                px-8 py-4 rounded-xl font-semibold text-lg font-['Inter'] 
+                px-8 py-4 rounded-xl font-semibold text-lg font-['Inter']
                 flex items-center gap-3 transition-all duration-300
-                ${activeTab === tab.id 
-                  ? 'bg-white/20 backdrop-blur-md text-white shadow-lg' 
+                ${activeTab === tab.id
+                  ? 'bg-white/20 backdrop-blur-md text-white shadow-lg'
                   : 'bg-white/5 backdrop-blur-sm text-gray-400 hover:bg-white/10 hover:text-white'
                 }
               `}
@@ -120,7 +118,7 @@ export default function Portfolio() {
                     initial={{ opacity: 0, scale: 0.9 }}
                     whileInView={{ opacity: 1, scale: 1 }}
                     viewport={{ once: false, amount: 0.3 }}
-                    transition={{ 
+                    transition={{
                       delay: 0.2 + index * 0.15,
                       duration: 0.5,
                       ease: [0.25, 0.1, 0.25, 1]
@@ -141,24 +139,31 @@ export default function Portfolio() {
 
                     {/* Project Content */}
                     <div className="p-6 space-y-4">
-                      {/* Type Badge */}
-                      <span className="inline-block px-3 py-1 bg-white/10 backdrop-blur-sm text-blue-400 text-xs font-semibold rounded-full font-['Fira_Code']">
-                        {project.type}
-                      </span>
+                      {/* Badges */}
+                      <div className="flex flex-wrap items-center gap-2">
+                        <span className="inline-block px-3 py-1 bg-white/10 backdrop-blur-sm text-blue-400 text-xs font-semibold rounded-full font-['Fira_Code']">
+                          {project.type}
+                        </span>
+                        {project.tag && (
+                          <span className="inline-block px-3 py-1 text-xs font-medium rounded-full font-['DM_Sans'] bg-white/8 text-gray-300 border border-white/15">
+                            {project.tag}
+                          </span>
+                        )}
+                      </div>
 
                       {/* Title */}
                       <h3 className="text-xl font-bold text-white font-['Space_Grotesk'] group-hover:text-blue-400 transition-colors">
                         {project.title}
                       </h3>
 
-                      {/* Description with ellipsis */}
+                      {/* Description */}
                       <p className="text-gray-400 font-['Inter'] text-sm leading-relaxed line-clamp-2">
                         {project.shortDescription}
                       </p>
 
                       {/* Details Button */}
-                      <button 
-                        onClick={() => openModal(project)}
+                      <button
+                        onClick={(e) => { e.stopPropagation(); openModal(project); }}
                         className="w-full mt-4 px-5 py-2.5 bg-white/10 backdrop-blur-sm text-white rounded-lg font-semibold flex items-center justify-center gap-2 hover:bg-white/20 transition-all font-['Inter']"
                       >
                         <Info className="w-4 h-4" />
@@ -169,24 +174,24 @@ export default function Portfolio() {
                 ))}
               </div>
 
-              {/* See More Button - Only shows if there are more than 6 projects */}
-{getSortedProjects().length > 6 && (
-  <motion.div
-    initial={{ opacity: 0, y: 20 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: false, amount: 0.3 }}
-    transition={{ duration: 0.5, delay: 0.8 }}
-    className="mt-8 flex justify-end"
-  >
-    <Link
-      href="/projects"
-      className="px-8 py-4 bg-white/10 backdrop-blur-md text-white rounded-xl font-semibold hover:bg-white/20 transition-all font-['Inter'] flex items-center gap-2"
-    >
-      See More
-      <FolderGit2 className="w-5 h-5" />
-    </Link>
-  </motion.div>
-)}
+              {/* See More Button */}
+              {getSortedProjects().length > 6 && (
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: false, amount: 0.3 }}
+                  transition={{ duration: 0.5, delay: 0.8 }}
+                  className="mt-8 flex justify-end"
+                >
+                  <Link
+                    href="/projects"
+                    className="px-8 py-4 bg-white/10 backdrop-blur-md text-white rounded-xl font-semibold hover:bg-white/20 transition-all font-['Inter'] flex items-center gap-2"
+                  >
+                    See More
+                    <FolderGit2 className="w-5 h-5" />
+                  </Link>
+                </motion.div>
+              )}
             </motion.div>
           )}
 
@@ -206,7 +211,7 @@ export default function Portfolio() {
                     initial={{ opacity: 0, scale: 0.9 }}
                     whileInView={{ opacity: 1, scale: 1 }}
                     viewport={{ once: false, amount: 0.3 }}
-                    transition={{ 
+                    transition={{
                       delay: 0.2 + index * 0.15,
                       duration: 0.5,
                       ease: [0.25, 0.1, 0.25, 1]
@@ -227,31 +232,30 @@ export default function Portfolio() {
                 ))}
               </div>
 
-              {/* See More Button - Only shows if there are more than 6 certificates */}
-{certificatesData.length > 6 && (
-  <motion.div
-    initial={{ opacity: 0, y: 20 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: false, amount: 0.3 }}
-    transition={{ duration: 0.5, delay: 0.8 }}
-    className="mt-8 flex justify-end"
-  >
-    <Link
-      href="/certificates"
-      className="px-8 py-4 bg-white/10 backdrop-blur-md text-white rounded-xl font-semibold hover:bg-white/20 transition-all font-['Inter'] flex items-center gap-2"
-    >
-      See More
-      <Award className="w-5 h-5" />
-    </Link>
-  </motion.div>
-)}
+              {/* See More Button */}
+              {certificatesData.length > 6 && (
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: false, amount: 0.3 }}
+                  transition={{ duration: 0.5, delay: 0.8 }}
+                  className="mt-8 flex justify-end"
+                >
+                  <Link
+                    href="/certificates"
+                    className="px-8 py-4 bg-white/10 backdrop-blur-md text-white rounded-xl font-semibold hover:bg-white/20 transition-all font-['Inter'] flex items-center gap-2"
+                  >
+                    See More
+                    <Award className="w-5 h-5" />
+                  </Link>
+                </motion.div>
+              )}
             </motion.div>
           )}
 
           {/* TECH STACK TAB */}
           {activeTab === 'techstack' && (
             <>
-              {/* Tech Stack Grid */}
               <motion.div
                 key="techstack"
                 initial={{ opacity: 0, y: 20 }}
@@ -266,7 +270,7 @@ export default function Portfolio() {
                     initial={{ opacity: 0, scale: 0.8 }}
                     whileInView={{ opacity: 1, scale: 1 }}
                     viewport={{ once: false, amount: 0.3 }}
-                    transition={{ 
+                    transition={{
                       delay: 0.1 + index * 0.05,
                       duration: 0.4,
                       ease: [0.25, 0.1, 0.25, 1]
@@ -274,8 +278,7 @@ export default function Portfolio() {
                     whileHover={{ y: -8, scale: 1.05, transition: { duration: 0.3 } }}
                     className="bg-white/5 backdrop-blur-md rounded-xl p-4 border border-white/10 hover:border-white/20 transition-all flex flex-col items-center justify-center gap-3 group"
                   >
-                    {/* SVG Icon or Image */}
-                    <div 
+                    <div
                       className="w-16 h-16 rounded-lg flex items-center justify-center flex-shrink-0"
                       style={{ backgroundColor: `${tech.color}20` }}
                     >
@@ -291,8 +294,6 @@ export default function Portfolio() {
                         tech.svg
                       )}
                     </div>
-                    
-                    {/* Tech Name */}
                     <span className="text-white text-sm font-semibold text-center font-['Inter'] group-hover:text-blue-400 transition-colors">
                       {tech.name}
                     </span>
@@ -307,7 +308,6 @@ export default function Portfolio() {
                 transition={{ duration: 0.5, delay: 0.3 }}
                 className="mt-16"
               >
-                {/* Tools Header */}
                 <motion.h3
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -317,7 +317,6 @@ export default function Portfolio() {
                   Tools & IDE
                 </motion.h3>
 
-                {/* Tools Grid */}
                 <div className="grid grid-cols-2 md:grid-cols-6 gap-6">
                   {toolsData.map((tool, index) => (
                     <motion.div
@@ -325,7 +324,7 @@ export default function Portfolio() {
                       initial={{ opacity: 0, scale: 0.8 }}
                       whileInView={{ opacity: 1, scale: 1 }}
                       viewport={{ once: false, amount: 0.3 }}
-                      transition={{ 
+                      transition={{
                         delay: 0.5 + index * 0.05,
                         duration: 0.4,
                         ease: [0.25, 0.1, 0.25, 1]
@@ -333,8 +332,7 @@ export default function Portfolio() {
                       whileHover={{ y: -8, scale: 1.05, transition: { duration: 0.3 } }}
                       className="bg-white/5 backdrop-blur-md rounded-xl p-4 border border-white/10 hover:border-white/20 transition-all flex flex-col items-center justify-center gap-3 group"
                     >
-                      {/* SVG Icon or Image */}
-                      <div 
+                      <div
                         className="w-16 h-16 rounded-lg flex items-center justify-center flex-shrink-0"
                         style={{ backgroundColor: `${tool.color}20` }}
                       >
@@ -350,8 +348,6 @@ export default function Portfolio() {
                           tool.svg
                         )}
                       </div>
-                      
-                      {/* Tool Name */}
                       <span className="text-white text-sm font-semibold text-center font-['Inter'] group-hover:text-blue-400 transition-colors">
                         {tool.name}
                       </span>
@@ -381,7 +377,6 @@ export default function Portfolio() {
                 onClick={(e) => e.stopPropagation()}
                 className="relative max-w-6xl w-full max-h-[90vh] rounded-3xl border-4 border-white overflow-hidden bg-white shadow-2xl"
               >
-                {/* Certificate Image */}
                 <div className="relative w-full h-[85vh]">
                   <Image
                     src={selectedCertificate.image}
@@ -394,177 +389,162 @@ export default function Portfolio() {
             </motion.div>
           )}
         </AnimatePresence>
-{/* PROJECT MODAL */}
-<AnimatePresence>
-  {selectedProject && (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      onClick={closeModal}
-      className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-6"
-    >
-      <motion.div
-        initial={{ scale: 0.9, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        exit={{ scale: 0.9, opacity: 0 }}
-        transition={{ duration: 0.3 }}
-        onClick={(e) => e.stopPropagation()}
-        className="bg-white/10 backdrop-blur-xl rounded-2xl border border-white/20 max-w-7xl w-full max-h-[90vh] overflow-y-auto"
-      >
-        {/* Close Button */}
-        <button
-          onClick={closeModal}
-          className="absolute top-6 right-6 w-10 h-10 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white/20 transition-all z-10"
-        >
-          <X className="w-6 h-6 text-white" />
-        </button>
 
-        <div className="grid md:grid-cols-2 gap-8 p-8">
-          {/* Left Side - Images */}
-          <div className="space-y-4">
-            {/* Main Image - Clickable */}
-            <div 
-              className="relative w-full h-[500px] rounded-lg overflow-hidden bg-gray-900/50 cursor-pointer"
-              onClick={() => setSelectedProjectImage(selectedProject.images[selectedImage])}
+        {/* PROJECT MODAL */}
+        <AnimatePresence>
+          {selectedProject && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={closeModal}
+              className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-6"
             >
-              <Image
-                src={selectedProject.images[selectedImage]}
-                alt={selectedProject.title}
-                fill
-                className="object-contain"
-              />
-            </div>
-
-            {/* Thumbnail Gallery */}
-            <div className="grid grid-cols-6 gap-2">
-              {selectedProject.images.map((img, index) => (
+              <motion.div
+                initial={{ scale: 0.9, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                exit={{ scale: 0.9, opacity: 0 }}
+                transition={{ duration: 0.3 }}
+                onClick={(e) => e.stopPropagation()}
+                className="bg-white/10 backdrop-blur-xl rounded-2xl border border-white/20 max-w-7xl w-full max-h-[90vh] overflow-y-auto"
+              >
+                {/* Close Button */}
                 <button
-                  key={index}
-                  onClick={() => setSelectedImage(index)}
-                  className={`relative h-16 rounded overflow-hidden border-2 transition-all ${
-                    selectedImage === index 
-                      ? 'border-blue-500' 
-                      : 'border-white/20 hover:border-white/40'
-                  }`}
+                  onClick={closeModal}
+                  className="absolute top-6 right-6 w-10 h-10 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white/20 transition-all z-10"
                 >
-                  <Image
-                    src={img}
-                    alt={`Preview ${index + 1}`}
-                    fill
-                    className="object-cover"
-                  />
+                  <X className="w-6 h-6 text-white" />
                 </button>
-              ))}
-            </div>
-          </div>
 
-          {/* Right Side - Details */}
-          <div className="space-y-6">
-            {/* Type Badge */}
-            <span className="inline-block px-4 py-2 bg-white/10 backdrop-blur-sm text-blue-400 text-sm font-semibold rounded-full font-['Fira_Code']">
-              {selectedProject.type}
-            </span>
+                <div className="grid md:grid-cols-2 gap-8 p-8">
+                  {/* Left Side - Images */}
+                  <div className="space-y-4">
+                    {/* Main Image - Clickable */}
+                    <div
+                      className="relative w-full h-[500px] rounded-lg overflow-hidden bg-gray-900/50 cursor-pointer"
+                      onClick={() => setSelectedProjectImage(selectedProject.images[selectedImage])}
+                    >
+                      <Image
+                        src={selectedProject.images[selectedImage]}
+                        alt={selectedProject.title}
+                        fill
+                        className="object-contain"
+                      />
+                    </div>
 
-            {/* Title */}
-            <h2 className="text-4xl font-bold text-white font-['Space_Grotesk']">
-              {selectedProject.title}
-            </h2>
+                    {/* Thumbnail Gallery */}
+                    <div className="grid grid-cols-6 gap-2">
+                      {selectedProject.images.map((img, index) => (
+                        <button
+                          key={index}
+                          onClick={() => setSelectedImage(index)}
+                          className={`relative h-16 rounded overflow-hidden border-2 transition-all ${
+                            selectedImage === index
+                              ? 'border-blue-500'
+                              : 'border-white/20 hover:border-white/40'
+                          }`}
+                        >
+                          <Image
+                            src={img}
+                            alt={`Preview ${index + 1}`}
+                            fill
+                            className="object-cover"
+                          />
+                        </button>
+                      ))}
+                    </div>
+                  </div>
 
-            {/* Description */}
-            <p className="text-gray-300 font-['Inter'] leading-relaxed">
-              {selectedProject.shortDescription}
-            </p>
+                  {/* Right Side - Details */}
+                  <div className="space-y-6">
+                    {/* Badges */}
+                    <div className="flex flex-wrap items-center gap-2">
+                      <span className="inline-block px-4 py-2 bg-white/10 backdrop-blur-sm text-blue-400 text-sm font-semibold rounded-full font-['Fira_Code']">
+                        {selectedProject.type}
+                      </span>
+                      {selectedProject.tag && (
+                        <span className="inline-block px-4 py-2 text-sm font-medium rounded-full font-['DM_Sans'] bg-white/8 text-gray-300 border border-white/15">
+                          {selectedProject.tag}
+                        </span>
+                      )}
+                    </div>
 
-            {/* Tech Stack */}
-            <div className="space-y-3">
-              <h3 className="text-lg font-semibold text-white font-['Space_Grotesk']">
-                Tech Stack Used:
-              </h3>
-              <div className="flex flex-wrap gap-2">
-                {selectedProject.techStack.map((tech, index) => (
-                  <span
-                    key={index}
-                    className="px-4 py-2 bg-white/10 backdrop-blur-sm text-white text-sm font-['Fira_Code'] rounded-lg"
-                  >
-                    {tech}
-                  </span>
-                ))}
-              </div>
-            </div>
+                    {/* Title */}
+                    <h2 className="text-4xl font-bold text-white font-['Space_Grotesk']">
+                      {selectedProject.title}
+                    </h2>
 
-            
-          </div>
-        </div>
-      </motion.div>
-    </motion.div>
-  
-  )}
-</AnimatePresence>
+                    {/* Description */}
+                    <p className="text-gray-300 font-['Inter'] leading-relaxed">
+                      {selectedProject.shortDescription}
+                    </p>
 
-{/* CERTIFICATE MODAL */}
-<AnimatePresence>
-  {selectedCertificate && (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      onClick={() => setSelectedCertificate(null)}
-      className="fixed inset-0 bg-black/90 backdrop-blur-sm z-50 flex items-center justify-center p-6"
-    >
-      <motion.div
-        initial={{ scale: 0.5, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        exit={{ scale: 0.5, opacity: 0 }}
-        transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
-        onClick={(e) => e.stopPropagation()}
-        className="relative max-w-6xl w-full max-h-[90vh] rounded-3xl border-4 border-white overflow-hidden bg-white shadow-2xl"
-      >
-        {/* Certificate Image */}
-        <div className="relative w-full h-[85vh]">
-          <Image
-            src={selectedCertificate.image}
-            alt={selectedCertificate.title}
-            fill
-            className="object-contain"
-          />
-        </div>
-      </motion.div>
-    </motion.div>
-  )}
-</AnimatePresence>
+                    {/* Tech Stack */}
+                    <div className="space-y-3">
+                      <h3 className="text-lg font-semibold text-white font-['Space_Grotesk']">
+                        Tech Stack Used:
+                      </h3>
+                      <div className="flex flex-wrap gap-2">
+                        {selectedProject.techStack.map((tech, index) => (
+                          <span
+                            key={index}
+                            className="px-4 py-2 bg-white/10 backdrop-blur-sm text-white text-sm font-['Fira_Code'] rounded-lg"
+                          >
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
 
-{/* PROJECT IMAGE ZOOM MODAL */}
-<AnimatePresence>
-  {selectedProjectImage && (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      onClick={() => setSelectedProjectImage(null)}
-      className="fixed inset-0 backdrop-blur-sm z-[70] flex items-center justify-center p-6"
-    >
-      <motion.div
-        initial={{ scale: 0.5, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        exit={{ scale: 0.5, opacity: 0 }}
-        transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
-        onClick={(e) => e.stopPropagation()}
-        className="relative max-w-6xl w-full max-h-[90vh] rounded-3xl  overflow-hidden shadow-2xl"
-      >
-        {/* Project Image */}
-        <div className="relative w-full h-[85vh]">
-          <Image
-            src={selectedProjectImage}
-            alt="Project preview"
-            fill
-            className="object-contain"
-          />
-        </div>
-      </motion.div>
-    </motion.div>
-  )}
-</AnimatePresence>
+                    {/* Visit Site Button */}
+                    {selectedProject.visitSite && (
+                      <a
+                        href={selectedProject.visitSite}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-600 to-blue-500 text-white rounded-xl font-semibold hover:shadow-lg hover:shadow-blue-500/50 transition-all font-['Inter']"
+                      >
+                        <ExternalLink className="w-5 h-5" />
+                        Visit Site
+                      </a>
+                    )}
+                  </div>
+                </div>
+              </motion.div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+
+        {/* PROJECT IMAGE ZOOM MODAL */}
+        <AnimatePresence>
+          {selectedProjectImage && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setSelectedProjectImage(null)}
+              className="fixed inset-0 backdrop-blur-sm z-[70] flex items-center justify-center p-6"
+            >
+              <motion.div
+                initial={{ scale: 0.5, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                exit={{ scale: 0.5, opacity: 0 }}
+                transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
+                onClick={(e) => e.stopPropagation()}
+                className="relative max-w-6xl w-full max-h-[90vh] rounded-3xl overflow-hidden shadow-2xl"
+              >
+                <div className="relative w-full h-[85vh]">
+                  <Image
+                    src={selectedProjectImage}
+                    alt="Project preview"
+                    fill
+                    className="object-contain"
+                  />
+                </div>
+              </motion.div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     </section>
   );

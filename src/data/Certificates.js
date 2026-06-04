@@ -29,6 +29,18 @@ export const certificatesData = [
     image: '/certificates/sql1.png',
     title: 'SQL Certification',
   },
+  {
+    id: 6,
+    institution: 'SimpliLearn',
+    image: '/certificates/html.png',
+    title: 'HTML Certification',
+  },
+  {
+    id: 7,
+    institution: 'SimpliLearn',
+    image: '/certificates/java.png',
+    title: 'Java Certification',
+  },
 ];
 
 // Group certificates by institution for the full certificates page
