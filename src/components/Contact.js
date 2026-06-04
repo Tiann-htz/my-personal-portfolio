@@ -75,7 +75,7 @@ export default function Contact() {
       icon: Linkedin, 
       title: "Let's Connect", 
       subtitle: 'on LinkedIn',
-      link: 'https://linkedin.com',
+      link: 'https://www.linkedin.com/in/christian-carl-paete-06a0483ab/',
       color: '#0077B5'
     },
     { 
