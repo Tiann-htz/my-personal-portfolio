@@ -4,7 +4,7 @@ export const projectsData = [
     order: 1,
     title: 'Scrappix',
     type: 'Mobile App',
-    shortDescription: 'A mobile app that turns everyday household waste into something useful. Point your camera at an item and instantly discover creative ways to repurpose it — making sustainability practical and accessible for every Filipino home.',
+    shortDescription: 'A capstone project in mobile development that helps Filipino households identify and repurpose everyday recyclable waste. Simply point your camera at an item and instantly get creative ideas on how to give it a second life.',
     techStack: ['React Native', 'Expo', 'Python', 'TensorFlow', 'MobileNetV2', 'Firebase'],
     images: [
       '/projects/scrappix1.png',
@@ -26,7 +26,7 @@ export const projectsData = [
     order: 2,
     title: 'PetShop POS',
     type: 'Desktop App',
-    shortDescription: 'A point-of-sale desktop application built for a real pet shop business. Handles everything from product lookup and cart management to billing, receipts, and discounts — all from a single, fast interface.',
+    shortDescription: 'An OJT project assigned by the company to build a point-of-sale system for their pet shop business. Handles product lookup, cart management, billing, discounts, and receipt generation — all from one clean and fast desktop interface.',
     techStack: ['C#', 'Windows Forms', 'MySQL', 'iText7'],
     images: [
       '/projects/petshop1.png',
