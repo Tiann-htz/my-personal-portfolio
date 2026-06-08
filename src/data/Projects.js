@@ -5,7 +5,7 @@ export const projectsData = [
     title: 'Scrappix',
     type: 'Mobile App',
     shortDescription: 'A capstone project in mobile development that helps Filipino households identify and repurpose everyday recyclable waste. Simply point your camera at an item and instantly get creative ideas on how to give it a second life.',
-    techStack: ['React Native', 'Expo', 'Python', 'TensorFlow', 'MobileNetV2', 'Firebase'],
+    techStack: ['Java', 'Python', 'TensorFlow', 'MobileNetV2', 'Firebase'],
     images: [
       '/projects/scrappix1.png',
       '/projects/scrappix2.png',

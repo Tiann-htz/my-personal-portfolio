@@ -11,6 +11,7 @@ import Portfolio from '@/components/Portfolio';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
 import ColorBends from '@/components/ui/ColorBends';
+import Experience from '@/components/Experience';
 
 // Header Component with Active Section Indicator
 function Header() {
@@ -18,7 +19,7 @@ function Header() {
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ['home', 'about', 'portfolio', 'contact'];
+      const sections = ['home', 'about', 'experience', 'portfolio', 'contact'];
       const scrollPosition = window.scrollY + 100;
 
       for (const section of sections) {
@@ -37,9 +38,10 @@ function Header() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const navItems = [
+ const navItems = [
     { name: 'Home', href: '#home' },
     { name: 'About', href: '#about' },
+    { name: 'Experience', href: '#experience' },
     { name: 'Portfolio', href: '#portfolio' },
     { name: 'Contact', href: '#contact' },
   ];
@@ -354,6 +356,7 @@ export default function Home() {
       <Header />
       <HeroSection />
       <About />
+      <Experience />
       <Portfolio />
       <Contact />
       <Footer />
